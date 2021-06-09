@@ -3,7 +3,7 @@ using System;
 namespace HeistPartII
 {
     // Let's create a Bank class to represent the security we're up against. Give the Bank class the following properties:
-    public interface Bank 
+    public class Bank 
     {
         public int CashOnHand { get; set; }
         public int AlarmScore { get; set; } 
