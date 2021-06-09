@@ -10,6 +10,8 @@ namespace HeistPartII
         public string Name { get; set; }
         public int SkillLevel { get; set; }
         public int PercentageCut { get; set; }
+        // Adding for implemnetation
+        public string Speciality { get; set; }
         // Each implementation for PerformSkill should do three things:
         public void PerformSkill(Bank bank)
         {
