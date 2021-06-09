@@ -195,12 +195,29 @@ namespace HeistPartII
                         Console.WriteLine("Most Secure: Security Guard || Least Secure: Vault");
                     }
                 }
-            Console.WriteLine("-----------------------------------------------------------");
+                Console.WriteLine("-----------------------------------------------------------");
             }
 
             /*Print out a report of the rolodex that includes each person's name, specialty, skill level, and cut. 
             Include an index in the report for each operative so that the user can select them by that index in the next step. 
             (You may want to update the IRobber interface and/or the implementing classes to be able to print out the specialty)*/
+            Console.WriteLine("This is your crew:");
+            Console.WriteLine("-----------------------------------------------------------");
+            
+            /*Create a new List<IRobber> and store it in a variable called crew. 
+            Prompt the user to enter the index of the operative they'd like to include in the heist. 
+            Once the user selects an operative, add them to the crew list.*/
+            List<IRobber> crew = new List<IRobber>();
+
+            foreach (IRobber robber in crew)
+            {
+                Console.WriteLine($@"
+                Name: {robber.Name}
+                Speciality: {robber.Speciality}
+                Skill Level: {robber.SkillLevel}
+                Cut: {robber.PercentageCut}
+             ");
+            }
         }
     }
 }
