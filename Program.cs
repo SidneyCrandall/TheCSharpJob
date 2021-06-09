@@ -7,7 +7,6 @@ namespace HeistPartII
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("-----------------------------------------------------------");
             Console.WriteLine("Robbing a bank! Robbing a whole bank! Beat that for a date!");
             Console.WriteLine("-----------------------------------------------------------");
 
@@ -62,7 +61,49 @@ namespace HeistPartII
             {
                 dcotor, psi, saibra, clara, danny, teller
             };
-            
+
+            /*When the program starts, print out the number of current operatives in the rolodex. 
+            Then prompt the user to enter the name of a new possible crew member. 
+            Once the user has entered a name, print out a list of possible specialties and have the user select which specialty this operative has. 
+            The list should contain the following options.*/
+            BuildYourCrew();
+            void BuildYourCrew()
+            {
+                Console.WriteLine($"Current crew for heist: {rolodex.Count}.");
+                Console.WriteLine();
+                Console.WriteLine("We need to get the 'band' back together...");
+                Console.Write("Who do we need: ");
+                string operativeName = Console.ReadLine(); 
+                if (operativeName == "")
+                {
+                    Console.WriteLine("----------------------------------------------------------------------------------------------------");
+                    Console.WriteLine(@"
+                    Your survival depends on following my instructions. 
+                    All the information you need is in this case. The Bank of Karabraxos is impregnable. 
+                    The Bank of Karabraxos has never been breached. You will rob the Bank of Karabraxos.
+                    ");
+                    return;
+                }
+                else 
+                {
+                    Console.WriteLine("Who do we need?");
+                    Console.Write(@"
+                    [1] Hacker (Disables alarms)
+                    [2] Muscle (Disarms guards)
+                    [3] Lock Specialist (Cracks vault): ");
+                    // parse the string entered into an integer for the program
+                    int operativeRole = Int32.Parse(Console.ReadLine());
+                    /*Once the user has selected a specialty, prompt them to enter the crew member's skill level as an integer between 1 and 100. 
+                    Then prompt the user to enter the percentage cut the crew member demands for each mission. Once the user has entered the crew member's name, specialty, skill level, and cut, 
+                    you should instantiate the appropriate class for that crew member (based on their specialty) and they should be added to the rolodex.*/
+                    Console.Write($"What's {operativeName} skill level (1-100): ");
+                    int skillSet = Int32.Parse(Console.ReadLine());
+
+                    Console.Write($"What will {operativeName} cut be? (1-100): ");
+                    int cut = Int32.Parse(Console.ReadLine());
+                }
+            }
+
         }
     }
 }
