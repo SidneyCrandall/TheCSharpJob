@@ -15,42 +15,42 @@ namespace HeistPartII
             {
                 Name = "The Doctor",
                 SkillLevel = 90,
-                PercentageCut = 35
+                PercentageCut = 35,
             };
 
             Hacker psi = new Hacker()
             {
                 Name = "Psi",
                 SkillLevel = 75,
-                PercentageCut = 25 
+                PercentageCut = 25,
             };
 
             LockSpecialist saibra = new LockSpecialist()
             {
                 Name = "Saibra",
                 SkillLevel = 60,
-                PercentageCut = 30
+                PercentageCut = 30,
             };
 
             LockSpecialist clara = new LockSpecialist()
             {
                 Name = "Clara Oswald",
                 SkillLevel = 75,
-                PercentageCut = 45
+                PercentageCut = 45,
             };
 
             Muscle danny = new Muscle()
             {
                 Name = "Danny Pink",
                 SkillLevel = 65,
-                PercentageCut =  25
+                PercentageCut = 25,
             };
 
             Muscle teller = new Muscle()
             {
                 Name = "The Teller",
                 SkillLevel = 85,
-                PercentageCut = 47
+                PercentageCut = 47,
             };
 
             /*In the Main method, create a List<IRobber> and store it in a variable named rolodex.
@@ -73,18 +73,15 @@ namespace HeistPartII
                 Console.WriteLine();
                 Console.WriteLine("We need to get the 'band' back together...");
                 Console.Write("Who do we need: ");
-                string name = Console.ReadLine(); 
+                string name = Console.ReadLine();
                 if (name == "")
                 {
                     Console.WriteLine("----------------------------------------------------------------------------------------------------");
-                    Console.WriteLine(@"
-                    Your survival depends on following my instructions. 
-                    All the information you need is in this case. The Bank of Karabraxos is impregnable. 
-                    The Bank of Karabraxos has never been breached. You will rob the Bank of Karabraxos.
-                    ");
+                    Console.WriteLine(@"Your survival depends on following my instructions. All the information you need is in this case. The Bank of Karabraxos is impregnable. The Bank of Karabraxos has never been breached. You will rob the Bank of Karabraxos.");
+                    Console.WriteLine("----------------------------------------------------------------------------------------------------");
                     return;
                 }
-                else 
+                else
                 {
                     Console.WriteLine("What do they spcialize in?");
                     Console.Write(@"
@@ -108,7 +105,7 @@ namespace HeistPartII
                         {
                             Name = name,
                             SkillLevel = skill,
-                            PercentageCut = cut
+                            PercentageCut = cut,
                         };
                         rolodex.Add(hacker);
                     }
@@ -118,22 +115,86 @@ namespace HeistPartII
                         {
                             Name = name,
                             SkillLevel = skill,
-                            PercentageCut = cut
+                            PercentageCut = cut,
                         };
                         rolodex.Add(muscle);
                     }
-                    else 
+                    else if (Speciality == 3)
                     {
                         LockSpecialist lockSpecialist = new LockSpecialist()
                         {
                             Name = name,
                             SkillLevel = skill,
-                            PercentageCut = cut
+                            PercentageCut = cut,
                         };
                         rolodex.Add(lockSpecialist);
                     }
+                    else
+                    {
+                        Console.WriteLine("You will rob the Bank of Karabraxos.");
+                        return;
+                    }
+                    BuildYourCrew();
                 }
-                BuildYourCrew();
+            }
+
+            /*Once the user is finished with their rolodex, it's time to begin a new heist
+              The program should create a new bank object and randomly assign values for these properties:
+              AlarmScore (between 0 and 100)
+              VaultScore (between 0 and 100)
+              SecurityGuardScore (between 0 and 100)
+              CashOnHand (between 50,000 and 1 million)*/
+            Bank bank = new Bank()
+            {
+                AlarmScore = new Random().Next(50000, 10000001),
+                VaultScore = new Random().Next(1, 101),
+                SecurityGuardSccore = new Random().Next(1, 101),
+                CashOnHand = new Random().Next(1, 101),
+            };
+
+            Console.WriteLine("-----------------------------------------------------------");
+            Console.WriteLine("The Bank is as Follows: ");
+
+            /*Let's do a little recon next. Print out a Recon Report to the user.
+             This should tell the user what the bank's most secure system is, and what its least secure system is 
+             (don't print the actual integer scores--just the name, i.e. Most Secure: Alarm Least Secure: Vault*/
+            Recon();
+            void Recon()
+            {
+                if (bank.AlarmScore > bank.VaultScore && bank.AlarmScore > bank.SecurityGuardSccore)
+                {
+                    if (bank.VaultScore > bank.SecurityGuardSccore)
+                    {
+                        Console.WriteLine("Most Secure: Alarm || Least Secure: Security Guard");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Most Secure Alarm || Least Secure: Vault");
+                    }
+                }
+                else if (bank.VaultScore > bank.AlarmScore && bank.VaultScore > bank.SecurityGuardSccore)
+                {
+                    if (bank.AlarmScore > bank.SecurityGuardSccore)
+                    {
+                        Console.WriteLine("Most Secure: Vault || Least Secure: Security Guard");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Most Secure: Vault || Least Secure: Alarm");
+                    }
+                }
+                else
+                {
+                    if (bank.VaultScore > bank.AlarmScore)
+                    {
+                        Console.WriteLine("Most Secure: Security Guard || Least Secure: Alarm");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Most Secure: Security Guard || Least Secure: Vault");
+                    }
+                }
+            Console.WriteLine("-----------------------------------------------------------");
             }
         }
     }
