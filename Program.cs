@@ -73,8 +73,8 @@ namespace HeistPartII
                 Console.WriteLine();
                 Console.WriteLine("We need to get the 'band' back together...");
                 Console.Write("Who do we need: ");
-                string operativeName = Console.ReadLine(); 
-                if (operativeName == "")
+                string name = Console.ReadLine(); 
+                if (name == "")
                 {
                     Console.WriteLine("----------------------------------------------------------------------------------------------------");
                     Console.WriteLine(@"
@@ -86,24 +86,55 @@ namespace HeistPartII
                 }
                 else 
                 {
-                    Console.WriteLine("Who do we need?");
+                    Console.WriteLine("What do they spcialize in?");
                     Console.Write(@"
                     [1] Hacker (Disables alarms)
                     [2] Muscle (Disarms guards)
                     [3] Lock Specialist (Cracks vault): ");
                     // parse the string entered into an integer for the program
-                    int operativeRole = Int32.Parse(Console.ReadLine());
+                    int Speciality = Int32.Parse(Console.ReadLine());
                     /*Once the user has selected a specialty, prompt them to enter the crew member's skill level as an integer between 1 and 100. 
                     Then prompt the user to enter the percentage cut the crew member demands for each mission. Once the user has entered the crew member's name, specialty, skill level, and cut, 
                     you should instantiate the appropriate class for that crew member (based on their specialty) and they should be added to the rolodex.*/
-                    Console.Write($"What's {operativeName} skill level (1-100): ");
-                    int skillSet = Int32.Parse(Console.ReadLine());
+                    Console.Write($"What's {name} skill level (1-100): ");
+                    int skill = Int32.Parse(Console.ReadLine());
 
-                    Console.Write($"What will {operativeName} cut be? (1-100): ");
+                    Console.Write($"What will {name} cut be? (1-100): ");
                     int cut = Int32.Parse(Console.ReadLine());
-                }
-            }
 
+                    if (Speciality == 1)
+                    {
+                        Hacker hacker = new Hacker()
+                        {
+                            Name = name,
+                            SkillLevel = skill,
+                            PercentageCut = cut
+                        };
+                        rolodex.Add(hacker);
+                    }
+                    else if (Speciality == 2)
+                    {
+                        Muscle muscle = new Muscle()
+                        {
+                            Name = name,
+                            SkillLevel = skill,
+                            PercentageCut = cut
+                        };
+                        rolodex.Add(muscle);
+                    }
+                    else 
+                    {
+                        LockSpecialist lockSpecialist = new LockSpecialist()
+                        {
+                            Name = name,
+                            SkillLevel = skill,
+                            PercentageCut = cut
+                        };
+                        rolodex.Add(lockSpecialist);
+                    }
+                }
+                BuildYourCrew();
+            }
         }
     }
 }
