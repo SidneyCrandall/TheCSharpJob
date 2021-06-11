@@ -203,7 +203,7 @@ namespace HeistPartII
             (You may want to update the IRobber interface and/or the implementing classes to be able to print out the specialty)*/
             Console.WriteLine("This is your crew:");
             Console.WriteLine("-----------------------------------------------------------");
-            
+
             /*Create a new List<IRobber> and store it in a variable called crew. 
             Prompt the user to enter the index of the operative they'd like to include in the heist. 
             Once the user selects an operative, add them to the crew list.*/
