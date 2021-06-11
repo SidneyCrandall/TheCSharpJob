@@ -8,6 +8,8 @@ namespace HeistPartII
         string Name { get; set; }
         int SkillLevel { get; set; }
         int PercentageCut { get; set; }
+        // Added for listing report on crew.
+        string Speciality { get; set; }
         // A method called PerformSkill that takes in a Bank parameter and doesn't return anything.
         void PerformSkill(Bank bank);
     }
